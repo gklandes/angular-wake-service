@@ -1,4 +1,4 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WakeService } from './wake.service';
 
 @Component({
@@ -6,10 +6,17 @@ import { WakeService } from './wake.service';
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent  {
+export class AppComponent implements OnInit  {
   name = 'Angular';
+  lastAwake: number;
 
   constructor (
-    wake: WakeService
+    private wake: WakeService
   ) {}
+
+  ngOnInit () {
+    this.wake.timer.subscribe(t => {
+      this.lastAwake = t;
+    })
+  }
 }
