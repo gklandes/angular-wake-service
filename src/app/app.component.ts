@@ -8,13 +8,16 @@ import { WakeService } from './wake.service';
 })
 export class AppComponent implements OnInit  {
   name = 'Angular';
-  lastAwake: number;
+  lastInit: Date = new Date();
+  lastSleep: Date | null = null;
 
   constructor (
     private wake: WakeService
   ) {}
 
   ngOnInit () {
-    this.wake.up$.subscribe(d => console.log(d));
+    this.wake.up$.subscribe(d => {
+      this.lastSleep = d;
+    });
   }
 }

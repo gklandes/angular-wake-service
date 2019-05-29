@@ -1,4 +1,5 @@
-<hello name="{{ name }}"></hello>
 <p>
-  Last awake at {{ lastAwake }}
+  Last Init at {{ lastInit | date : 'hh:mm:ss' }}
+  <br>
+  Last Slept at {{ lastSleep | date : 'hh:mm:ss' }}  
 </p>
