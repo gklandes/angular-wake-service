@@ -15,8 +15,6 @@ export class AppComponent implements OnInit  {
   ) {}
 
   ngOnInit () {
-    this.wake.timer.subscribe(t => {
-      this.lastAwake = t;
-    })
+    this.wake.up$.subscribe(d => console.log(d));
   }
 }
