@@ -22,6 +22,7 @@ export class WakeService {
         const diff: number = now.valueOf() - lastAwake.valueOf();
         if (diff > timeout * 2) {
           subscriber.next(now);
+          lastSlept = lastAwake;
         }
         lastAwake = now;
       })
